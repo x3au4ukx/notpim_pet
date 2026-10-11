@@ -38,3 +38,48 @@ python manage.py createsuperuser
 
 # Запуск
 python manage.py runserver
+```
+##  Эндпоинты
+
+| Метод | URL                        | Описание             |
+|-------|----------------------------|----------------------|
+| GET   | /api/products/             | Список товаров       |
+|POST | /api/products/             | Создать товар        |
+|GET	| /api/products/{id}/        | 	Детали товара       |
+|PUT | /api/products/{id}/        | Полное обновление    |
+|PATCH | /api/products/{id}/        | Частичное обновление |
+|DELETE | /api/products/{id}/        | Удалить товар        |
+|POST | /api/products/import_feed/ | Импорт из JSON-фида  |
+
+## Пример: создание товара
+
+```bash
+curl -X POST http://127.0.0.1:8000/api/products/ \
+  -H "Content-Type: application/json" \
+  -d '{"sku": "SKU001", "name": "Товар", "price": "199.99"}'
+```
+
+## Пример: импорт фида
+
+```bash
+curl -X POST http://127.0.0.1:8000/api/products/import_feed/ \
+  -H "Content-Type: application/json" \
+  -d '[
+    {"sku": "SKU001", "name": "Товар 1", "price": "100.00"},
+    {"sku": "SKU002", "name": "Товар 2", "price": "200.00"}
+  ]'
+```
+Ответ:
+```json
+{
+    "total": 2,
+    "created": 2,
+    "failed": 0,
+    "created_items": [...],
+    "errors": []
+}
+```
+
+## Автор
+
+[Андрей Зайцев](https://github.com/x3au4ukx)
