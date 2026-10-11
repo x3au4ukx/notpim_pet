@@ -58,7 +58,19 @@ curl -X POST http://127.0.0.1:8000/api/products/ \
   -H "Content-Type: application/json" \
   -d '{"sku": "SKU001", "name": "Товар", "price": "199.99"}'
 ```
-
+Ответ:
+```json
+{
+    "id": 1,
+    "sku": "SKU001",
+    "name": "Товар",
+    "description": "",
+    "price": "199.99",
+    "category": "",
+    "created_at": "2026-10-11T18:07:30.396700Z",
+    "updated_at": "2026-10-11T18:07:30.396700Z"
+}
+```
 ## Пример: импорт фида
 
 ```bash
@@ -75,7 +87,28 @@ curl -X POST http://127.0.0.1:8000/api/products/import_feed/ \
     "total": 2,
     "created": 2,
     "failed": 0,
-    "created_items": [...],
+    "created_items": [
+        {
+            "id": 1,
+            "sku": "SKU001",
+            "name": "Товар 1",
+            "description": "",
+            "price": "100.00",
+            "category": "",
+            "created_at": "2026-10-11T18:05:55.802654Z",
+            "updated_at": "2026-10-11T18:05:55.802654Z"
+        },
+        {
+            "id": 2,
+            "sku": "SKU002",
+            "name": "Товар 2",
+            "description": "",
+            "price": "200.00",
+            "category": "",
+            "created_at": "2026-10-11T18:05:55.814617Z",
+            "updated_at": "2026-10-11T18:05:55.814617Z"
+        }
+    ],
     "errors": []
 }
 ```
